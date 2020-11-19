@@ -1,26 +1,28 @@
-var arr = [1, 2, 3, 0, true, NaN, 4, 6, 0]
-var arrEven = []
-var arrOdd = []
-var arrZero = []
-var arrNotNumber =[]
+let arr = [1, 2, 3, 0, true, NaN, 4, 6, 0]
+let even = 0, odd = 0, zero = 0, notNumber = 0;
 function even_odd(num) {
     if (num % 2 == 0)
-        arrEven.push("Even")
+        even++;
     else
-        arrOdd.push("Odd")
+        odd++;
 
 }
 
 arr.forEach(function(item, index, array) {
-if (typeof (item) !== 'number' || (!+item && item !== 0))
-    arrNotNumber.push("NotNumber")
+if (typeof (item) !== 'number' || isNaN(item))
+    notNumber++;
 else if (item == 0)
-        arrZero.push("Zero")
+    zero++;
 else
-        even_odd(item)
+    even_odd(item)
 })
 
-console.log("Even "+arrEven.length)
-console.log("Odd "+arrOdd.length)
-console.log("Zero: "+arrZero.length)
-console.log("NotNumber "+arrNotNumber.length)
+console.log("Even "+even)
+console.log("Odd "+odd)
+console.log("Zero: "+zero)
+console.log("NotNumber "+notNumber)
+
+// Задание выполнено верно, но есть несколько замечаний. !+item && item !== 0 - данная проверка не совсем корректна, т.к. не очевидно, какие значения она должна отсеять. По сути, эта проверка должна отсеивать только значения NaN, т.к. всё остальные нечисловые значения отсеются проверкой на typeof. Поэтому лучше будет заменить это условие на обычную проверку isNaN
+// Вместо массивов для подсчета итоговых значений лучше использовать обычные переменные-счетчики, т.к. использовать именно массив нет необходимости, и обычные переменные занимают меньше места в памяти
+// Cтарайтесь не использовать ключевое слово var для объявления переменных, это устаревший синтаксис. Лучше пользоваться более современными операторами: let или const
+// Исправила в коде вышеперечисленные замечания
