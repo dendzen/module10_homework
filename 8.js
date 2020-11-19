@@ -8,5 +8,7 @@ let coordinates = new Map([
 
 for (let name of coordinates.keys() ) {
     let val = coordinates.get(name);
-    console.log('«Ключ — '+name+', значение — '+val+'»');
+    console.log(`«Ключ — ${name}, значение — ${val}»`);
 }
+
+// Почти правильно, только по заданию нужно было использоать шаблонные строки. Выше исправила
